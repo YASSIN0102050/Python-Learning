@@ -5,7 +5,6 @@
 <title>Advanced Python - Job Ready</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* نفس الـ style السابق تماماً */
 body {background:#0f172a; color:white; font-family:Poppins; padding:40px; line-height:1.6;}
 h1 {color:#38bdf8; text-align:center;}
 h2 {color:#7dd3fc;}
@@ -16,6 +15,8 @@ pre {background:#111827; padding:18px; border-radius:10px; overflow-x:auto; font
 .quiz-question {margin-bottom:25px;}
 button {background:#38bdf8; color:#0f172a; padding:12px 30px; border:none; border-radius:8px; font-size:1.1rem; cursor:pointer;}
 #result {margin-top:20px; font-size:1.3rem; font-weight:600;}
+a {color:#38bdf8; text-decoration:none;}
+a:hover {text-decoration:underline;}
 </style>
 </head>
 <body>
@@ -143,33 +144,33 @@ tracker.save_to_file()</code></pre>
 <h2>🎯 Advanced Quiz – 5 Questions</h2>
 
 <div class="quiz-question">
-<p><strong>1.</strong> ما الذي يُسمى الدالة <code>__init__</code> ؟</p>
+<p><strong>1.</strong> What is the purpose of the <code>__init__</code> method?</p>
 <label><input type="radio" name="q1" value="A">Constructor</label><br>
 <label><input type="radio" name="q1" value="B">Destructor</label>
 </div>
 
 <div class="quiz-question">
-<p><strong>2.</strong> أي كتلة تنفذ دائماً سواء حصل خطأ أم لا؟</p>
+<p><strong>2.</strong> Which block always executes regardless of exceptions?</p>
 <label><input type="radio" name="q2" value="A">except</label><br>
 <label><input type="radio" name="q2" value="B">finally</label>
 </div>
 
 <div class="quiz-question">
-<p><strong>3.</strong> ماذا يرجع <code>response.json()</code> في مكتبة requests؟</p>
+<p><strong>3.</strong> What does <code>response.json()</code> return in the requests library?</p>
 <label><input type="radio" name="q3" value="A">string</label><br>
 <label><input type="radio" name="q3" value="B">dictionary</label>
 </div>
 
 <div class="quiz-question">
-<p><strong>4.</strong> في pandas، كيف تختار الصفوف التي تُحقق شرط؟</p>
+<p><strong>4.</strong> In pandas, how do you select rows that meet a condition?</p>
 <label><input type="radio" name="q4" value="A">df[condition]</label><br>
 <label><input type="radio" name="q4" value="B">df.select(condition)</label>
 </div>
 
 <div class="quiz-question">
-<p><strong>5.</strong> ما الغرض الأساسي من الـ inheritance؟</p>
-<label><input type="radio" name="q5" value="A">إعادة استخدام الكود</label><br>
-<label><input type="radio" name="q5" value="B">إخفاء البيانات</label>
+<p><strong>5.</strong> What is the main purpose of inheritance in OOP?</p>
+<label><input type="radio" name="q5" value="A">Code reuse</label><br>
+<label><input type="radio" name="q5" value="B">Data hiding</label>
 </div>
 
 <button onclick="submitAdvancedQuiz()">Submit Quiz</button>
@@ -187,16 +188,15 @@ function submitAdvancedQuiz() {
 
     document.getElementById("result").innerHTML = `
         <h3>Your Score: ${score} / 5</h3>
-        <p>الإجابات الصحيحة: 1-A, 2-B, 3-B, 4-A, 5-A</p>
-        ${score >= 4 ? "Congratulations! أنت جاهز تبدأ شغل junior python فعلياً 🎉" : "ركز على النقاط الضعيفة وكمل مشاريع صغيرة 💪"}
+        <p>Correct Answers: 1-A, 2-B, 3-B, 4-A, 5-A</p>
+        ${score >= 4 ? "Congratulations! You are ready to start as a Junior Python developer 🎉" : "Focus on weak points and practice small projects 💪"}
     `;
 }
 </script>
 
 <p style="text-align:center; margin-top:60px; font-size:1.4rem; color:#38bdf8;">
-<a href="home.html">← Back to Home | You've completed the journey!</a>
+<a href="index.html">← Back to Home | You've completed the Python journey!</a>
 </p>
 
 </body>
-
 </html>

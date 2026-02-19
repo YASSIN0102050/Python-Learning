@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Intermediate Python - Build Real Programs</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body {background:#0f172a; color:white; font-family:Poppins; padding:40px; line-height:1.6;}
+h1 {color:#38bdf8; text-align:center;}
+h2 {color:#7dd3fc;}
+.card {background:#1e293b; padding:25px; border-radius:12px; margin:25px 0; box-shadow:0 4px 10px rgba(0,0,0,0.3);}
+pre {background:#111827; padding:18px; border-radius:10px; overflow-x:auto; font-size:0.95rem;}
+code {font-family:'Courier New', monospace;}
+a {color:#38bdf8; text-decoration:none;}
+a:hover {text-decoration:underline;}
+.explanation {background:#334155; padding:15px; border-left:5px solid #38bdf8; margin:15px 0; border-radius:6px;}
+.quiz {margin-top:40px;}
+.quiz-question {margin-bottom:25px;}
+button {background:#38bdf8; color:#0f172a; padding:12px 30px; border:none; border-radius:8px; font-size:1.1rem; cursor:pointer;}
+#result {margin-top:20px; font-size:1.3rem; font-weight:600;}
+</style>
+</head>
+<body>
+
+<h1>🟡 Intermediate Python - Build Real Programs</h1>
+<p style="text-align:center; font-size:1.1rem;"><a href="home.html">⬅ Back to Home</a></p>
+
+<div class="card">
+<h2>1. Lists – Advanced Operations</h2>
+<div class="explanation">
+Lists are mutable (تتغير). يمكنك إضافة/حذف/تعديل العناصر بسهولة.
+</div>
+<pre><code>tasks = ["Study", "Code", "Sleep"]
+
+tasks.append("Eat")           # add at end
+tasks.insert(1, "Exercise")   # add at index 1
+tasks.remove("Sleep")         # remove by value
+popped = tasks.pop()          # remove & return last item
+
+print(tasks)                  # ['Study', 'Exercise', 'Code', 'Eat']
+print("Length:", len(tasks))
+print("Sorted:", sorted(tasks))</code></pre>
+</div>
+
+<div class="card">
+<h2>2. List Comprehensions (أسرع وأنظف طريقة)</h2>
+<pre><code># Normal way
+squares = []
+for i in range(10):
+    squares.append(i**2)
+
+# List comprehension (الطريقة المفضلة)
+squares = [i**2 for i in range(10)]
+
+# with condition
+even_squares = [i**2 for i in range(20) if i % 2 == 0]
+
+print(even_squares)</code></pre>
+</div>
+
+<div class="card">
+<h2>3. Dictionaries – Key → Value</h2>
+<div class="explanation">
+مثل قاموس: كل كلمة (key) لها معنى (value).
+</div>
+<pre><code>student = {
+    "name": "Yassin",
+    "age": 19,
+    "grades": [85, 92, 78],
+    "is_active": True
+}
+
+print(student["name"])
+student["city"] = "Cairo"          # add new key
+student["age"] += 1                # update
+print(student.get("phone", "Not found"))  # safe get
+
+for key, value in student.items():
+    print(f"{key}: {value}")</code></pre>
+</div>
+
+<div class="card">
+<h2>4. Tuples & Sets</h2>
+<pre><code># Tuple → لا يتغير (immutable) وأسرع من list
+coords = (30.0444, 31.2357)   # latitude, longitude
+x, y = coords                 # unpacking
+
+# Set → لا تكرر + عمليات رياضية سريعة
+a = {1, 2, 3, 3}             # → {1,2,3}
+b = {3, 4, 5}
+print(a | b)                 # union  {1,2,3,4,5}
+print(a & b)                 # intersection {3}
+print(a - b)                 # difference {1,2}</code></pre>
+</div>
+
+<div class="card">
+<h2>5. Functions – Advanced</h2>
+<pre><code>def calculate_total(items, discount=0.1):
+    total = sum(items)
+    return total * (1 - discount)
+
+print(calculate_total([100, 200, 50]))           # 315.0
+print(calculate_total([300, 400], 0.2))          # 560.0
+
+# *args → عدد متغير من الـ arguments
+def sum_all(*numbers):
+    return sum(numbers)
+
+print(sum_all(1,2,3,4,5))   # 15</code></pre>
+</div>
+
+<div class="card">
+<h2>6. File Handling + with statement</h2>
+<pre><code># Write
+with open("notes.txt", "w") as file:
+    file.write("Python is awesome!\nLine 2\n")
+
+# Read
+with open("notes.txt", "r") as file:
+    content = file.read()
+    print(content)
+
+# Read line by line
+with open("notes.txt") as f:
+    for line in f:
+        print(line.strip())</code></pre>
+</div>
+
+<div class="card">
+<h2>7. Mini Project – To-Do List (save/load from file)</h2>
+<pre><code>def load_tasks():
+    try:
+        with open("tasks.txt", "r") as f:
+            return [line.strip() for line in f if line.strip()]
+    except FileNotFoundError:
+        return []
+
+def save_tasks(tasks):
+    with open("tasks.txt", "w") as f:
+        for task in tasks:
+            f.write(task + "\n")
+
+tasks = load_tasks()
+
+while True:
+    print("\n1. Show tasks\n2. Add task\n3. Remove task\n4. Exit")
+    choice = input("Choose: ")
+    
+    if choice == "1":
+        for i, t in enumerate(tasks, 1):
+            print(f"{i}. {t}")
+    elif choice == "2":
+        task = input("New task: ")
+        tasks.append(task)
+        save_tasks(tasks)
+    elif choice == "3":
+        num = int(input("Task number to remove: ")) - 1
+        if 0 <= num < len(tasks):
+            tasks.pop(num)
+            save_tasks(tasks)
+    elif choice == "4":
+        break</code></pre>
+</div>
+
+<div class="card quiz">
+<h2>🎯 Intermediate Quiz – 5 Questions</h2>
+
+<div class="quiz-question">
+<p><strong>1.</strong> ماذا يرجع الكود التالي؟ <code>print([x*2 for x in [1,2,3] if x > 1])</code></p>
+<label><input type="radio" name="q1" value="A">[2,4,6]</label><br>
+<label><input type="radio" name="q1" value="B">[4,6]</label><br>
+<label><input type="radio" name="q1" value="C">[2,4]</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>2.</strong> أي من التالي صحيح عن الـ tuple؟</p>
+<label><input type="radio" name="q2" value="A">يمكن تعديله بعد الإنشاء</label><br>
+<label><input type="radio" name="q2" value="B">لا يمكن تعديله (immutable)</label><br>
+<label><input type="radio" name="q2" value="C">أبطأ من الـ list</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>3.</strong> ما الذي يفعله الكود <code>dict.get("key", 0)</code> ؟</p>
+<label><input type="radio" name="q3" value="A">يرمي خطأ إذا لم يوجد المفتاح</label><br>
+<label><input type="radio" name="q3" value="B">يرجع القيمة أو 0 إذا لم يوجد</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>4.</strong> ما الفرق بين <code>remove()</code> و <code>pop()</code> في القائمة؟</p>
+<label><input type="radio" name="q4" value="A">remove يحذف بالقيمة، pop يحذف بالموقع</label><br>
+<label><input type="radio" name="q4" value="B">pop يحذف بالقيمة، remove بالموقع</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>5.</strong> كيف تكتب جميع الأسطر في ملف بأمان؟</p>
+<label><input type="radio" name="q5" value="A">open("file.txt", "w")</label><br>
+<label><input type="radio" name="q5" value="B">with open("file.txt", "w") as f:</label>
+</div>
+
+<button onclick="submitQuiz()">Submit Quiz</button>
+<div id="result"></div>
+</div>
+
+<script>
+function submitQuiz() {
+    let score = 0;
+    if (document.querySelector('input[name="q1"]:checked')?.value === "B") score++;
+    if (document.querySelector('input[name="q2"]:checked')?.value === "B") score++;
+    if (document.querySelector('input[name="q3"]:checked')?.value === "B") score++;
+    if (document.querySelector('input[name="q4"]:checked')?.value === "A") score++;
+    if (document.querySelector('input[name="q5"]:checked')?.value === "B") score++;
+
+    document.getElementById("result").innerHTML = `
+        <h3>Your Score: ${score} / 5</h3>
+        <p>الإجابات الصحيحة: 1-B, 2-B, 3-B, 4-A, 5-B</p>
+        ${score >= 4 ? "ممتاز! جاهز للـ Advanced 🚀" : "راجع النقاط الضعيفة وحاول مرة تانية 💪"}
+    `;
+}
+</script>
+
+<p style="text-align:center; margin-top:50px; font-size:1.3rem;">
+<a href="advanced.html">→ Go to Advanced Level (Job-Ready)</a>
+</p>
+
+</body>
+</html>

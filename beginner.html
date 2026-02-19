@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Beginner Python - Easy & Fun</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body {background:#0f172a; color:white; font-family:Poppins; padding:40px; line-height:1.6;}
+h1 {color:#38bdf8; text-align:center;}
+h2 {color:#7dd3fc;}
+.card {background:#1e293b; padding:25px; border-radius:12px; margin:25px 0; box-shadow:0 4px 10px rgba(0,0,0,0.3);}
+pre {background:#111827; padding:18px; border-radius:10px; overflow-x:auto; font-size:0.95rem;}
+code {font-family:'Courier New', monospace;}
+a {color:#38bdf8; text-decoration:none;}
+a:hover {text-decoration:underline;}
+.explanation {background:#334155; padding:15px; border-left:5px solid #38bdf8; margin:15px 0; border-radius:6px;}
+.quiz {margin-top:40px;}
+.quiz-question {margin-bottom:25px;}
+button {background:#38bdf8; color:#0f172a; padding:12px 30px; border:none; border-radius:8px; font-size:1.1rem; cursor:pointer;}
+#result {margin-top:20px; font-size:1.3rem; font-weight:600;}
+</style>
+</head>
+<body>
+
+<h1>🟢 Beginner Python - Easy & Fun</h1>
+<p style="text-align:center; font-size:1.1rem;"><a href="home.html">⬅ Back to Home</a></p>
+
+<div class="card">
+<h2>1. Variables & Data Types</h2>
+<div class="explanation">
+Think of a variable as a labeled box. You put something inside and give it a name so you can use it later.
+Python automatically knows the type – you don’t have to tell it!
+</div>
+<pre><code>name = "Yassin"          # string (text)
+age = 16                 # integer (whole number)
+height = 1.75            # float (decimal)
+is_student = True        # boolean (True/False)
+
+print(name)
+print(type(age))         # shows &lt;class 'int'&gt;</code></pre>
+</div>
+
+<div class="card">
+<h2>2. Numbers & Math Operations</h2>
+<div class="explanation">
+Same symbols you already know: + – * / // % **
+</div>
+<pre><code>a = 10
+b = 3
+print(a + b)   # 13
+print(a // b)  # 3   (floor division)
+print(a % b)   # 1   (remainder)
+print(a ** 2)  # 100 (power)</code></pre>
+</div>
+
+<div class="card">
+<h2>3. Strings & f-strings</h2>
+<div class="explanation">
+Strings are text. Use f-strings (Python 3.6+) – the easiest way to mix text and variables.
+</div>
+<pre><code>name = "Yassin"
+age = 16
+print(f"Hello, my name is {name} and I am {age} years old.")</code></pre>
+</div>
+
+<div class="card">
+<h2>4. Getting Input from User</h2>
+<pre><code>name = input("What is your name? ")
+age = int(input("How old are you? "))   # convert to number</code></pre>
+</div>
+
+<div class="card">
+<h2>5. if – elif – else (Decision Making)</h2>
+<pre><code>age = int(input("Enter your age: "))
+
+if age >= 18:
+    print("You can drive and vote!")
+elif age >= 13:
+    print("You are a teenager!")
+else:
+    print("You are still a kid 😊")</code></pre>
+</div>
+
+<div class="card">
+<h2>6. Loops – for & while</h2>
+<pre><code># for loop
+for i in range(5):          # 0,1,2,3,4
+    print("Hello", i)
+
+# while loop
+count = 1
+while count <= 5:
+    print(count)
+    count += 1</code></pre>
+</div>
+
+<div class="card">
+<h2>7. Lists (Your First Data Structure)</h2>
+<div class="explanation">
+A list is like a shopping list – ordered and changeable.
+</div>
+<pre><code>fruits = ["apple", "banana", "cherry"]
+fruits.append("mango")
+print(fruits[0])        # apple
+print(len(fruits))      # 4
+for fruit in fruits:
+    print(fruit)</code></pre>
+</div>
+
+<div class="card">
+<h2>8. Functions – Reusable Code</h2>
+<pre><code>def greet(name, age=18):
+    print(f"Hello {name}! You are {age} years old.")
+
+greet("Yassin", 16)
+greet("Sara")   # uses default age</code></pre>
+</div>
+
+<div class="card">
+<h2>Mini Projects (Practice What You Learned)</h2>
+<h3>Project 1: Age Calculator</h3>
+<pre><code>name = input("What is your name? ")
+birth_year = int(input("Year you were born? "))
+age = 2026 - birth_year
+print(f"Hi {name}, you are {age} years old in 2026!")</code></pre>
+
+<h3>Project 2: Simple Calculator</h3>
+<pre><code>num1 = float(input("First number: "))
+num2 = float(input("Second number: "))
+op = input("Operation (+ - * /): ")
+
+if op == "+":
+    print(num1 + num2)
+elif op == "-":
+    print(num1 - num2)
+# ... add * and / yourself!</code></pre>
+</div>
+
+<div class="card quiz">
+<h2>🎯 Beginner Quiz – Test Yourself!</h2>
+<div class="quiz-question">
+    <p><strong>1.</strong> What will be printed?<br><code>print(10 // 3)</code></p>
+    <label><input type="radio" name="q1" value="A"> 3.333</label><br>
+    <label><input type="radio" name="q1" value="B"> 3</label><br>
+    <label><input type="radio" name="q1" value="C"> 1</label>
+</div>
+<div class="quiz-question">
+    <p><strong>2.</strong> How do you get user input as a number?</p>
+    <label><input type="radio" name="q2" value="A"> input()</label><br>
+    <label><input type="radio" name="q2" value="B"> int(input())</label><br>
+    <label><input type="radio" name="q2" value="C"> str(input())</label>
+</div>
+<div class="quiz-question">
+    <p><strong>3.</strong> Which loop runs a fixed number of times?</p>
+    <label><input type="radio" name="q3" value="A"> while</label><br>
+    <label><input type="radio" name="q3" value="B"> for</label>
+</div>
+<div class="quiz-question">
+    <p><strong>4.</strong> What does .append() do to a list?</p>
+    <label><input type="radio" name="q4" value="A"> Removes an item</label><br>
+    <label><input type="radio" name="q4" value="B"> Adds an item to the end</label>
+</div>
+<div class="quiz-question">
+    <p><strong>5.</strong> f-strings start with which letter?</p>
+    <label><input type="radio" name="q5" value="A"> f</label><br>
+    <label><input type="radio" name="q5" value="B"> s</label>
+</div>
+<button onclick="submitBeginnerQuiz()">Submit Quiz</button>
+<div id="beginnerResult"></div>
+</div>
+
+<script>
+function submitBeginnerQuiz() {
+    let score = 0;
+    if (document.querySelector('input[name="q1"]:checked')?.value === "B") score++;
+    if (document.querySelector('input[name="q2"]:checked')?.value === "B") score++;
+    if (document.querySelector('input[name="q3"]:checked')?.value === "B") score++;
+    if (document.querySelector('input[name="q4"]:checked')?.value === "B") score++;
+    if (document.querySelector('input[name="q5"]:checked')?.value === "A") score++;
+
+    const result = document.getElementById("beginnerResult");
+    result.innerHTML = `<h3>Your Score: ${score}/5 🎉</h3>
+    <p>Correct answers: 1-B, 2-B, 3-B, 4-B, 5-A</p>
+    <p>Great job! Ready for Intermediate? →</p>`;
+}
+</script>
+
+<p style="text-align:center; margin-top:40px; font-size:1.2rem;">
+<a href="intermediate.html">🚀 Go to Intermediate Level →</a>
+</p>
+
+</body>
+</html>

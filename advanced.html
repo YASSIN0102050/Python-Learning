@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Advanced Python - Job Ready</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* نفس الـ style السابق تماماً */
+body {background:#0f172a; color:white; font-family:Poppins; padding:40px; line-height:1.6;}
+h1 {color:#38bdf8; text-align:center;}
+h2 {color:#7dd3fc;}
+.card {background:#1e293b; padding:25px; border-radius:12px; margin:25px 0; box-shadow:0 4px 10px rgba(0,0,0,0.3);}
+pre {background:#111827; padding:18px; border-radius:10px; overflow-x:auto; font-size:0.95rem;}
+.explanation {background:#334155; padding:15px; border-left:5px solid #38bdf8; margin:15px 0; border-radius:6px;}
+.quiz {margin-top:40px;}
+.quiz-question {margin-bottom:25px;}
+button {background:#38bdf8; color:#0f172a; padding:12px 30px; border:none; border-radius:8px; font-size:1.1rem; cursor:pointer;}
+#result {margin-top:20px; font-size:1.3rem; font-weight:600;}
+</style>
+</head>
+<body>
+
+<h1>🔴 Advanced Python - Job Ready</h1>
+<p style="text-align:center; font-size:1.1rem;"><a href="home.html">⬅ Back to Home</a></p>
+
+<div class="card">
+<h2>1. Object-Oriented Programming (OOP)</h2>
+<pre><code>class BankAccount:
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
+    
+    def deposit(self, amount):
+        self.balance += amount
+        print(f"Deposited ${amount}. New balance: ${self.balance}")
+    
+    def withdraw(self, amount):
+        if amount > self.balance:
+            print("Insufficient funds!")
+        else:
+            self.balance -= amount
+            print(f"Withdrew ${amount}. New balance: ${self.balance}")
+
+acc = BankAccount("Yassin", 1000)
+acc.deposit(500)
+acc.withdraw(2000)</code></pre>
+</div>
+
+<div class="card">
+<h2>2. Inheritance & Polymorphism</h2>
+<pre><code>class Animal:
+    def speak(self):
+        pass
+
+class Dog(Animal):
+    def speak(self):
+        return "Woof!"
+
+class Cat(Animal):
+    def speak(self):
+        return "Meow!"
+
+for animal in [Dog(), Cat()]:
+    print(animal.speak())</code></pre>
+</div>
+
+<div class="card">
+<h2>3. Exception Handling (try / except / else / finally)</h2>
+<pre><code>try:
+    num = int(input("Enter a number: "))
+    result = 100 / num
+except ValueError:
+    print("Please enter a valid number!")
+except ZeroDivisionError:
+    print("Cannot divide by zero!")
+else:
+    print("Result:", result)
+finally:
+    print("Operation finished.")</code></pre>
+</div>
+
+<div class="card">
+<h2>4. Working with APIs (requests)</h2>
+<pre><code>import requests
+
+response = requests.get("https://api.github.com/users/octocat")
+if response.status_code == 200:
+    data = response.json()
+    print("Name:", data["name"])
+    print("Public repos:", data["public_repos"])
+else:
+    print("Error:", response.status_code)</code></pre>
+</div>
+
+<div class="card">
+<h2>5. Introduction to Pandas (Data Analysis)</h2>
+<pre><code>import pandas as pd
+
+data = {
+    "Name": ["Ali", "Sara", "Mohamed", "Yassin"],
+    "Age": [22, 19, 25, 20],
+    "Salary": [45000, 32000, 60000, 28000]
+}
+
+df = pd.DataFrame(data)
+print(df)
+
+print("\nAverage salary:", df["Salary"].mean())
+print("People older than 20:\n", df[df["Age"] > 20])</code></pre>
+</div>
+
+<div class="card">
+<h2>6. Mini Project – Simple Expense Tracker (OOP + File)</h2>
+<pre><code>class Expense:
+    def __init__(self, description, amount, category):
+        self.description = description
+        self.amount = amount
+        self.category = category
+
+class ExpenseTracker:
+    def __init__(self):
+        self.expenses = []
+    
+    def add_expense(self, desc, amt, cat):
+        self.expenses.append(Expense(desc, amt, cat))
+    
+    def total(self):
+        return sum(e.amount for e in self.expenses)
+    
+    def save_to_file(self):
+        with open("expenses.txt", "w") as f:
+            for e in self.expenses:
+                f.write(f"{e.description},{e.amount},{e.category}\n")
+
+tracker = ExpenseTracker()
+tracker.add_expense("Lunch", 120, "Food")
+tracker.add_expense("Uber", 85, "Transport")
+print("Total spent:", tracker.total())
+tracker.save_to_file()</code></pre>
+</div>
+
+<div class="card quiz">
+<h2>🎯 Advanced Quiz – 5 Questions</h2>
+
+<div class="quiz-question">
+<p><strong>1.</strong> ما الذي يُسمى الدالة <code>__init__</code> ؟</p>
+<label><input type="radio" name="q1" value="A">Constructor</label><br>
+<label><input type="radio" name="q1" value="B">Destructor</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>2.</strong> أي كتلة تنفذ دائماً سواء حصل خطأ أم لا؟</p>
+<label><input type="radio" name="q2" value="A">except</label><br>
+<label><input type="radio" name="q2" value="B">finally</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>3.</strong> ماذا يرجع <code>response.json()</code> في مكتبة requests؟</p>
+<label><input type="radio" name="q3" value="A">string</label><br>
+<label><input type="radio" name="q3" value="B">dictionary</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>4.</strong> في pandas، كيف تختار الصفوف التي تُحقق شرط؟</p>
+<label><input type="radio" name="q4" value="A">df[condition]</label><br>
+<label><input type="radio" name="q4" value="B">df.select(condition)</label>
+</div>
+
+<div class="quiz-question">
+<p><strong>5.</strong> ما الغرض الأساسي من الـ inheritance؟</p>
+<label><input type="radio" name="q5" value="A">إعادة استخدام الكود</label><br>
+<label><input type="radio" name="q5" value="B">إخفاء البيانات</label>
+</div>
+
+<button onclick="submitAdvancedQuiz()">Submit Quiz</button>
+<div id="result"></div>
+</div>
+
+<script>
+function submitAdvancedQuiz() {
+    let score = 0;
+    if (document.querySelector('input[name="q1"]:checked')?.value === "A") score++;
+    if (document.querySelector('input[name="q2"]:checked')?.value === "B") score++;
+    if (document.querySelector('input[name="q3"]:checked')?.value === "B") score++;
+    if (document.querySelector('input[name="q4"]:checked')?.value === "A") score++;
+    if (document.querySelector('input[name="q5"]:checked')?.value === "A") score++;
+
+    document.getElementById("result").innerHTML = `
+        <h3>Your Score: ${score} / 5</h3>
+        <p>الإجابات الصحيحة: 1-A, 2-B, 3-B, 4-A, 5-A</p>
+        ${score >= 4 ? "Congratulations! أنت جاهز تبدأ شغل junior python فعلياً 🎉" : "ركز على النقاط الضعيفة وكمل مشاريع صغيرة 💪"}
+    `;
+}
+</script>
+
+<p style="text-align:center; margin-top:60px; font-size:1.4rem; color:#38bdf8;">
+<a href="home.html">← Back to Home | You've completed the journey!</a>
+</p>
+
+</body>
+</html>

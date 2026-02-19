@@ -28,7 +28,7 @@ button {background:#38bdf8; color:#0f172a; padding:12px 30px; border:none; borde
 <div class="card">
 <h2>1. Lists – Advanced Operations</h2>
 <div class="explanation">
-Lists are mutable (تتغير). يمكنك إضافة/حذف/تعديل العناصر بسهولة.
+Lists are mutable. You can easily add, remove, or modify elements.
 </div>
 <pre><code>tasks = ["Study", "Code", "Sleep"]
 
@@ -43,16 +43,19 @@ print("Sorted:", sorted(tasks))</code></pre>
 </div>
 
 <div class="card">
-<h2>2. List Comprehensions (أسرع وأنظف طريقة)</h2>
+<h2>2. List Comprehensions</h2>
+<div class="explanation">
+List comprehensions are faster and cleaner for creating lists.
+</div>
 <pre><code># Normal way
 squares = []
 for i in range(10):
     squares.append(i**2)
 
-# List comprehension (الطريقة المفضلة)
+# List comprehension (preferred)
 squares = [i**2 for i in range(10)]
 
-# with condition
+# With condition
 even_squares = [i**2 for i in range(20) if i % 2 == 0]
 
 print(even_squares)</code></pre>
@@ -61,7 +64,7 @@ print(even_squares)</code></pre>
 <div class="card">
 <h2>3. Dictionaries – Key → Value</h2>
 <div class="explanation">
-مثل قاموس: كل كلمة (key) لها معنى (value).
+A dictionary stores data in key-value pairs.
 </div>
 <pre><code>student = {
     "name": "Yassin",
@@ -72,7 +75,7 @@ print(even_squares)</code></pre>
 
 print(student["name"])
 student["city"] = "Cairo"          # add new key
-student["age"] += 1                # update
+student["age"] += 1                 # update
 print(student.get("phone", "Not found"))  # safe get
 
 for key, value in student.items():
@@ -81,11 +84,14 @@ for key, value in student.items():
 
 <div class="card">
 <h2>4. Tuples & Sets</h2>
-<pre><code># Tuple → لا يتغير (immutable) وأسرع من list
+<div class="explanation">
+Tuples are immutable and faster than lists. Sets store unique items and support fast mathematical operations.
+</div>
+<pre><code># Tuple → immutable
 coords = (30.0444, 31.2357)   # latitude, longitude
 x, y = coords                 # unpacking
 
-# Set → لا تكرر + عمليات رياضية سريعة
+# Set → unique values
 a = {1, 2, 3, 3}             # → {1,2,3}
 b = {3, 4, 5}
 print(a | b)                 # union  {1,2,3,4,5}
@@ -95,6 +101,9 @@ print(a - b)                 # difference {1,2}</code></pre>
 
 <div class="card">
 <h2>5. Functions – Advanced</h2>
+<div class="explanation">
+Functions help you write reusable code. You can also use *args for variable number of arguments.
+</div>
 <pre><code>def calculate_total(items, discount=0.1):
     total = sum(items)
     return total * (1 - discount)
@@ -102,7 +111,6 @@ print(a - b)                 # difference {1,2}</code></pre>
 print(calculate_total([100, 200, 50]))           # 315.0
 print(calculate_total([300, 400], 0.2))          # 560.0
 
-# *args → عدد متغير من الـ arguments
 def sum_all(*numbers):
     return sum(numbers)
 
@@ -111,7 +119,7 @@ print(sum_all(1,2,3,4,5))   # 15</code></pre>
 
 <div class="card">
 <h2>6. File Handling + with statement</h2>
-<pre><code># Write
+<pre><code># Write to a file
 with open("notes.txt", "w") as file:
     file.write("Python is awesome!\nLine 2\n")
 
@@ -166,33 +174,33 @@ while True:
 <h2>🎯 Intermediate Quiz – 5 Questions</h2>
 
 <div class="quiz-question">
-<p><strong>1.</strong> ماذا يرجع الكود التالي؟ <code>print([x*2 for x in [1,2,3] if x > 1])</code></p>
+<p><strong>1.</strong> What does the following code return? <code>print([x*2 for x in [1,2,3] if x > 1])</code></p>
 <label><input type="radio" name="q1" value="A">[2,4,6]</label><br>
 <label><input type="radio" name="q1" value="B">[4,6]</label><br>
 <label><input type="radio" name="q1" value="C">[2,4]</label>
 </div>
 
 <div class="quiz-question">
-<p><strong>2.</strong> أي من التالي صحيح عن الـ tuple؟</p>
-<label><input type="radio" name="q2" value="A">يمكن تعديله بعد الإنشاء</label><br>
-<label><input type="radio" name="q2" value="B">لا يمكن تعديله (immutable)</label><br>
-<label><input type="radio" name="q2" value="C">أبطأ من الـ list</label>
+<p><strong>2.</strong> Which statement about tuples is correct?</p>
+<label><input type="radio" name="q2" value="A">Tuples can be modified after creation</label><br>
+<label><input type="radio" name="q2" value="B">Tuples cannot be modified (immutable)</label><br>
+<label><input type="radio" name="q2" value="C">Tuples are slower than lists</label>
 </div>
 
 <div class="quiz-question">
-<p><strong>3.</strong> ما الذي يفعله الكود <code>dict.get("key", 0)</code> ؟</p>
-<label><input type="radio" name="q3" value="A">يرمي خطأ إذا لم يوجد المفتاح</label><br>
-<label><input type="radio" name="q3" value="B">يرجع القيمة أو 0 إذا لم يوجد</label>
+<p><strong>3.</strong> What does <code>dict.get("key", 0)</code> do?</p>
+<label><input type="radio" name="q3" value="A">Throws an error if the key is missing</label><br>
+<label><input type="radio" name="q3" value="B">Returns the value or 0 if the key is missing</label>
 </div>
 
 <div class="quiz-question">
-<p><strong>4.</strong> ما الفرق بين <code>remove()</code> و <code>pop()</code> في القائمة؟</p>
-<label><input type="radio" name="q4" value="A">remove يحذف بالقيمة، pop يحذف بالموقع</label><br>
-<label><input type="radio" name="q4" value="B">pop يحذف بالقيمة، remove بالموقع</label>
+<p><strong>4.</strong> What is the difference between <code>remove()</code> and <code>pop()</code> for lists?</p>
+<label><input type="radio" name="q4" value="A">remove deletes by value, pop deletes by index</label><br>
+<label><input type="radio" name="q4" value="B">pop deletes by value, remove deletes by index</label>
 </div>
 
 <div class="quiz-question">
-<p><strong>5.</strong> كيف تكتب جميع الأسطر في ملف بأمان؟</p>
+<p><strong>5.</strong> How do you safely write all lines to a file?</p>
 <label><input type="radio" name="q5" value="A">open("file.txt", "w")</label><br>
 <label><input type="radio" name="q5" value="B">with open("file.txt", "w") as f:</label>
 </div>
@@ -212,8 +220,8 @@ function submitQuiz() {
 
     document.getElementById("result").innerHTML = `
         <h3>Your Score: ${score} / 5</h3>
-        <p>الإجابات الصحيحة: 1-B, 2-B, 3-B, 4-A, 5-B</p>
-        ${score >= 4 ? "ممتاز! جاهز للـ Advanced 🚀" : "راجع النقاط الضعيفة وحاول مرة تانية 💪"}
+        <p>Correct Answers: 1-B, 2-B, 3-B, 4-A, 5-B</p>
+        ${score >= 4 ? "Excellent! Ready for Advanced Level 🚀" : "Review weak points and try again 💪"}
     `;
 }
 </script>
@@ -223,5 +231,5 @@ function submitQuiz() {
 </p>
 
 </body>
-
 </html>
+
